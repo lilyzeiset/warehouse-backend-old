@@ -1,1 +1,1 @@
-# Backend for Project 1: Inveentory Management
+# Backend for Project 1: Inventory Management
