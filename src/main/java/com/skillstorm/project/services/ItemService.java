@@ -18,6 +18,17 @@ public class ItemService {
 	@Autowired private CategoryRepository categoryRepository;
 	
 	/**
+	 * Finds an item by its id
+	 * @param id item id
+	 * @return the found item
+	 */
+	public ItemDto findItemById(long id) {
+		return itemRepository.findById(id)
+				.orElseThrow()
+				.toDto();
+	}
+	
+	/**
 	 * Finds all items
 	 * @return list of items
 	 */
