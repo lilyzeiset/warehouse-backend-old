@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.skillstorm.project.dtos.ItemDto;
+
 /**
  * Represents a unique item
  * @author lily
@@ -103,6 +105,10 @@ public class Item {
 			return false;
 		Item other = (Item) obj;
 		return sku == other.sku;
+	}
+	
+	public ItemDto toDto() {
+		return new ItemDto(sku, category.getId(), name, desc);
 	}
 	
 	
