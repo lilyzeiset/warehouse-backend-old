@@ -15,7 +15,8 @@ public class ItemService {
 	@Autowired
 	private ItemRepository itemRepository;
 	
-	@Autowired private CategoryRepository categoryRepository;
+	@Autowired 
+	private CategoryRepository categoryRepository;
 	
 	/**
 	 * Finds an item by its id
