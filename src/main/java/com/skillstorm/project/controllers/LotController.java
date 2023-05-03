@@ -29,11 +29,6 @@ public class LotController {
 		return lotService.findLotById(id);
 	}
 	
-	@GetMapping
-	public List<LotDto> findAllLots() {
-		return lotService.findAllLots();
-	}
-	
 	@GetMapping("/w/{warehouse_id}")
 	public List<LotDto> findAllLotsByWarehouseId(@PathVariable long warehouse_id) {
 		return lotService.findAllLotsByWarehouseId(warehouse_id);
