@@ -25,6 +25,9 @@ public class Warehouse {
 	private String name;
 	
 	@Column
+	private String desc;
+	
+	@Column
 	private String address;
 	
 	@Column(name = "max_capacity")
@@ -56,6 +59,14 @@ public class Warehouse {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getDesc() {
+		return desc;
+	}
+
+	public void setDesc(String desc) {
+		this.desc = desc;
 	}
 
 	public String getAddress() {
