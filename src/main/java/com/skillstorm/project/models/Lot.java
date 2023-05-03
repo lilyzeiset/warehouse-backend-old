@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.skillstorm.project.dtos.LotDto;
+
 /**
  * Represents a quantity of a single item to be stored in a warehouse.
  * i.e. a pallet of items.
@@ -51,7 +53,7 @@ public class Lot {
 	/**
 	 * Item contained in this lot
 	 */
-	@OneToOne //IM NOT CERTAIN THIS IS RIGHT BUT I THINK IT IS
+	@ManyToOne
 	@JoinColumn(name = "sku")
 	private Item item;
 	
@@ -60,12 +62,13 @@ public class Lot {
 		super();
 	}
 
-	public Lot(long id, int quantity, Warehouse warehouse, String location) {
+	public Lot(long id, int quantity, String location, Warehouse warehouse, Item item) {
 		super();
 		this.id = id;
 		this.quantity = quantity;
-		this.warehouse = warehouse;
 		this.location = location;
+		this.warehouse = warehouse;
+		this.item = item;
 	}
 
 	public long getId() {
@@ -84,6 +87,14 @@ public class Lot {
 		this.quantity = quantity;
 	}
 
+	public String getLocation() {
+		return location;
+	}
+
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	
 	public Warehouse getWarehouse() {
 		return warehouse;
 	}
@@ -92,12 +103,12 @@ public class Lot {
 		this.warehouse = warehouse;
 	}
 
-	public String getLocation() {
-		return location;
+	public Item getItem() {
+		return item;
 	}
 
-	public void setLocation(String location) {
-		this.location = location;
+	public void setItem(Item item) {
+		this.item = item;
 	}
 
 	@Override
@@ -117,7 +128,9 @@ public class Lot {
 		return id == other.id;
 	}
 	
-
+	public LotDto toDto() {
+		return new LotDto(id, warehouse.getId(), item.getSku(), quantity, location);
+	}
 	
 
 }
