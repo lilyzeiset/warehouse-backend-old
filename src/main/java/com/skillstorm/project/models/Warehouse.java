@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.skillstorm.project.dtos.WarehouseDto;
+
 /**
  * Represents a single warehouse.
  * @author lily
@@ -102,6 +104,8 @@ public class Warehouse {
 		return id == other.id;
 	}
 	
-	
+	public WarehouseDto toDto() {
+		return new WarehouseDto(id, name, desc, address, maxCapacity);
+	}
 
 }
