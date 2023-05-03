@@ -52,7 +52,7 @@ public class LotController {
 	}
 	
 	@DeleteMapping("/{sku}")
-	public void deleteLot(@PathVariable long sku) {
-		lotService.deleteLot(sku);
+	public void deleteLot(@PathVariable long id) {
+		lotService.deleteLot(id);
 	}
 }
