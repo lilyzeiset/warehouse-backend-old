@@ -39,10 +39,11 @@ public class Warehouse {
 		super();
 	}
 
-	public Warehouse(long id, String name, String address, double maxCapacity) {
+	public Warehouse(long id, String name, String desc, String address, double maxCapacity) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.desc = desc;
 		this.address = address;
 		this.maxCapacity = maxCapacity;
 	}
