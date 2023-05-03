@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.skillstorm.project.dtos.CategoryDto;
+
 /**
  * Represents a category of items
  * @author lily
@@ -88,5 +90,7 @@ public class Category {
 		return id == other.id;
 	}
 	
-	
+	public CategoryDto toDto() {
+		return new CategoryDto(id, name, desc);
+	}
 }
