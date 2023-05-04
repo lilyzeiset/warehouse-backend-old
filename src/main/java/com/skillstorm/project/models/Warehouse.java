@@ -27,7 +27,7 @@ public class Warehouse {
 	private String name;
 	
 	@Column
-	private String desc;
+	private String description;
 	
 	@Column
 	private String address;
@@ -39,11 +39,11 @@ public class Warehouse {
 		super();
 	}
 
-	public Warehouse(long id, String name, String desc, String address, double maxCapacity) {
+	public Warehouse(long id, String name, String description, String address, double maxCapacity) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.desc = desc;
+		this.description = description;
 		this.address = address;
 		this.maxCapacity = maxCapacity;
 	}
@@ -64,12 +64,12 @@ public class Warehouse {
 		this.name = name;
 	}
 	
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDesc(String description) {
+		this.description = description;
 	}
 
 	public String getAddress() {
@@ -106,7 +106,7 @@ public class Warehouse {
 	}
 	
 	public WarehouseDto toDto() {
-		return new WarehouseDto(id, name, desc, address, maxCapacity);
+		return new WarehouseDto(id, name, description, address, maxCapacity);
 	}
 
 }

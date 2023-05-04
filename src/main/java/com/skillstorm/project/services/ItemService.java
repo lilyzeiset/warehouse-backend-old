@@ -3,6 +3,8 @@ package com.skillstorm.project.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.skillstorm.project.dtos.ItemDto;
 import com.skillstorm.project.models.Category;
@@ -10,6 +12,8 @@ import com.skillstorm.project.models.Item;
 import com.skillstorm.project.repositories.CategoryRepository;
 import com.skillstorm.project.repositories.ItemRepository;
 
+@Service
+@Transactional
 public class ItemService {
 
 	@Autowired
@@ -64,7 +68,7 @@ public class ItemService {
 		Item item = new Item(
 				itemData.getSku(),
 				itemData.getName(),
-				itemData.getDesc(),
+				itemData.getDescription(),
 				category);
 		
 		return itemRepository.save(item).toDto();

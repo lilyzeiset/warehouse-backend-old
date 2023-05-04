@@ -12,7 +12,7 @@ import com.skillstorm.project.models.Item;
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
 
-	@Query("select i from Item i where i.category_id = ?1")
+	@Query("select i from Item i where i.category.id = ?1")
 	public List<Item> findAllItemsByCategoryId(long id);
 
 }

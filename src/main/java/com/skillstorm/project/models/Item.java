@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -37,24 +38,24 @@ public class Item {
 	 * Description of item
 	 */
 	@Column
-	private String desc;
+	private String description;
 	
 	/**
 	 * Category of item
 	 */
 	@ManyToOne
-	@Column(name = "category_id")
+	@JoinColumn(name = "category_id")
 	private Category category;
 
 	public Item() {
 		super();
 	}
 
-	public Item(long sku, String name, String desc, Category category) {
+	public Item(long sku, String name, String description, Category category) {
 		super();
 		this.sku = sku;
 		this.name = name;
-		this.desc = desc;
+		this.description = description;
 		this.category = category;
 	}
 
@@ -74,12 +75,12 @@ public class Item {
 		this.name = name;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Category getCategory() {
@@ -108,7 +109,7 @@ public class Item {
 	}
 	
 	public ItemDto toDto() {
-		return new ItemDto(sku, category.getId(), name, desc);
+		return new ItemDto(sku, category.getId(), name, description);
 	}
 	
 	

@@ -9,7 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.skillstorm.project.dtos.LotDto;
@@ -54,7 +53,7 @@ public class Lot {
 	 * Item contained in this lot
 	 */
 	@ManyToOne
-	@JoinColumn(name = "sku")
+	@JoinColumn(name = "item_id")
 	private Item item;
 	
 

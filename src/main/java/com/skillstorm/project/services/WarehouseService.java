@@ -3,11 +3,15 @@ package com.skillstorm.project.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.skillstorm.project.dtos.WarehouseDto;
 import com.skillstorm.project.models.Warehouse;
 import com.skillstorm.project.repositories.WarehouseRepository;
 
+@Service
+@Transactional
 public class WarehouseService {
 	
 	@Autowired
@@ -44,7 +48,7 @@ public class WarehouseService {
 		Warehouse warehouse = new Warehouse(
 				warehouseData.getId(),
 				warehouseData.getName(),
-				warehouseData.getDesc(),
+				warehouseData.getDescription(),
 				warehouseData.getAddress(),
 				warehouseData.getMaxCapacity());
 		

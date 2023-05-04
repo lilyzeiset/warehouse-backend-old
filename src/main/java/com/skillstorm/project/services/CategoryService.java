@@ -3,11 +3,15 @@ package com.skillstorm.project.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.skillstorm.project.dtos.CategoryDto;
 import com.skillstorm.project.models.Category;
 import com.skillstorm.project.repositories.CategoryRepository;
 
+@Service
+@Transactional
 public class CategoryService {
 
 	@Autowired
@@ -44,7 +48,7 @@ public class CategoryService {
 		Category category = new Category(
 				categoryData.getId(),
 				categoryData.getName(),
-				categoryData.getDesc());
+				categoryData.getDescription());
 		
 		return categoryRepository.save(category).toDto();
 	}

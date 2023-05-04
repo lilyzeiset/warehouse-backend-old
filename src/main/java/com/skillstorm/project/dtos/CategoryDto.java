@@ -4,17 +4,17 @@ public class CategoryDto {
 
 	private long id;
 	private String name;
-	private String desc;
+	private String description;
 	
 	public CategoryDto() {
 		super();
 	}
 
-	public CategoryDto(long id, String name, String desc) {
+	public CategoryDto(long id, String name, String description) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.desc = desc;
+		this.description = description;
 	}
 
 	public long getId() {
@@ -33,12 +33,12 @@ public class CategoryDto {
 		this.name = name;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDesc(String description) {
+		this.description = description;
 	}
 	
 	

@@ -4,7 +4,7 @@ public class WarehouseDto {
 
 	private long id;
 	private String name;
-	private String desc;
+	private String description;
 	private String address;
 	private double maxCapacity;
 	
@@ -12,11 +12,11 @@ public class WarehouseDto {
 		super();
 	}
 	
-	public WarehouseDto(long id, String name, String desc, String address, double maxCapacity) {
+	public WarehouseDto(long id, String name, String description, String address, double maxCapacity) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.desc = desc;
+		this.description = description;
 		this.address = address;
 		this.maxCapacity = maxCapacity;
 	}
@@ -37,12 +37,12 @@ public class WarehouseDto {
 		this.name = name;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription(String desc) {
+		this.description = desc;
 	}
 
 	public String getAddress() {

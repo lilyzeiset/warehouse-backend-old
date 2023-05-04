@@ -36,17 +36,17 @@ public class Category {
 	 * Description of category
 	 */
 	@Column
-	private String desc;
+	private String description;
 
 	public Category() {
 		super();
 	}
 
-	public Category(long id, String name, String desc) {
+	public Category(long id, String name, String description) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.desc = desc;
+		this.description = description;
 	}
 
 	public long getId() {
@@ -65,12 +65,12 @@ public class Category {
 		this.name = name;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription () {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDescription (String description ) {
+		this.description = description ;
 	}
 
 	@Override
@@ -91,6 +91,6 @@ public class Category {
 	}
 	
 	public CategoryDto toDto() {
-		return new CategoryDto(id, name, desc);
+		return new CategoryDto(id, name, description);
 	}
 }

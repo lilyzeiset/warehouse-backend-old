@@ -5,18 +5,18 @@ public class ItemDto {
 	private long sku;
 	private long categoryId;
 	private String name;
-	private String desc;
+	private String description;
 	
 	public ItemDto() {
 		super();
 	}
 
-	public ItemDto(long sku, long categoryId, String name, String desc) {
+	public ItemDto(long sku, long categoryId, String name, String description) {
 		super();
 		this.sku = sku;
 		this.categoryId = categoryId;
 		this.name = name;
-		this.desc = desc;
+		this.description = description;
 	}
 
 	public long getSku() {
@@ -43,12 +43,12 @@ public class ItemDto {
 		this.name = name;
 	}
 
-	public String getDesc() {
-		return desc;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesc(String desc) {
-		this.desc = desc;
+	public void setDesc(String description) {
+		this.description = description;
 	}
 	
 }
