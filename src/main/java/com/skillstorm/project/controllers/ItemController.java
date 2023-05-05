@@ -2,6 +2,8 @@ package com.skillstorm.project.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -42,13 +44,13 @@ public class ItemController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<ItemDto> createItem(@RequestBody ItemDto itemData) {
+	public ResponseEntity<ItemDto> createItem(@Valid @RequestBody ItemDto itemData) {
 		ItemDto item = itemService.createItem(itemData);
 		return new ResponseEntity<>(item, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{sku}")
-	public ItemDto updateItem(@PathVariable long sku, @RequestBody ItemDto itemData) {
+	public ItemDto updateItem(@PathVariable long sku, @Valid @RequestBody ItemDto itemData) {
 		itemData.setSku(sku);
 		return itemService.createItem(itemData);
 	}

@@ -2,6 +2,8 @@ package com.skillstorm.project.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,13 +39,13 @@ public class CategoryController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<CategoryDto> createItem(@RequestBody CategoryDto categoryData) {
+	public ResponseEntity<CategoryDto> createItem(@Valid @RequestBody CategoryDto categoryData) {
 		CategoryDto item = categoryService.createCategory(categoryData);
 		return new ResponseEntity<>(item, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	public CategoryDto updateItem(@PathVariable long id, @RequestBody CategoryDto categoryData) {
+	public CategoryDto updateItem(@PathVariable long id, @Valid @RequestBody CategoryDto categoryData) {
 		categoryData.setId(id);
 		return categoryService.createCategory(categoryData);
 	}

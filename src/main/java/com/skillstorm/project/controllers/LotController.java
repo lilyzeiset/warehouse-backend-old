@@ -2,6 +2,8 @@ package com.skillstorm.project.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,13 +39,13 @@ public class LotController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<LotDto> createLot(@RequestBody LotDto lotData) {
+	public ResponseEntity<LotDto> createLot(@Valid @RequestBody LotDto lotData) {
 		LotDto lot = lotService.createLot(lotData);
 		return new ResponseEntity<>(lot, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{sku}")
-	public LotDto updateLot(@PathVariable long id, @RequestBody LotDto lotData) {
+	public LotDto updateLot(@PathVariable long id, @Valid @RequestBody LotDto lotData) {
 		lotData.setId(id);
 		return lotService.createLot(lotData);
 	}

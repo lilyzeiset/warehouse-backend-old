@@ -1,8 +1,11 @@
 package com.skillstorm.project.dtos;
 
+import javax.validation.constraints.NotBlank;
+
 public class CategoryDto {
 
 	private long id;
+	@NotBlank 
 	private String name;
 	private String description;
 	

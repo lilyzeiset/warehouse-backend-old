@@ -2,6 +2,8 @@ package com.skillstorm.project.controllers;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,13 +39,13 @@ public class WarehouseController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<WarehouseDto> createItem(@RequestBody WarehouseDto warehouseData) {
+	public ResponseEntity<WarehouseDto> createItem(@Valid @RequestBody WarehouseDto warehouseData) {
 		WarehouseDto item = warehouseService.createWarehouse(warehouseData);
 		return new ResponseEntity<>(item, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	public WarehouseDto updateItem(@PathVariable long id, @RequestBody WarehouseDto warehouseData) {
+	public WarehouseDto updateItem(@PathVariable long id, @Valid @RequestBody WarehouseDto warehouseData) {
 		warehouseData.setId(id);
 		return warehouseService.createWarehouse(warehouseData);
 	}

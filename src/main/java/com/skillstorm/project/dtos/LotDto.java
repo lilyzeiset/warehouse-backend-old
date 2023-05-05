@@ -1,10 +1,13 @@
 package com.skillstorm.project.dtos;
 
+import javax.validation.constraints.Min;
+
 public class LotDto {
 
 	private long id;
 	private long warehouseId;
 	private long itemId;
+	@Min(1)
 	private int quantity;
 	private String location;
 	
