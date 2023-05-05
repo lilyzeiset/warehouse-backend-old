@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 import com.skillstorm.project.dtos.WarehouseDto;
 
 /**
@@ -33,13 +34,13 @@ public class Warehouse {
 	private String address;
 	
 	@Column(name = "max_capacity")
-	private double maxCapacity;
+	private int maxCapacity;
 
 	public Warehouse() {
 		super();
 	}
 
-	public Warehouse(long id, String name, String description, String address, double maxCapacity) {
+	public Warehouse(long id, String name, String description, String address, int maxCapacity) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -68,7 +69,7 @@ public class Warehouse {
 		return description;
 	}
 
-	public void setDesc(String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 
@@ -80,11 +81,11 @@ public class Warehouse {
 		this.address = address;
 	}
 
-	public double getMaxCapacity() {
+	public int getMaxCapacity() {
 		return maxCapacity;
 	}
 
-	public void setMaxCapacity(double maxCapacity) {
+	public void setMaxCapacity(int maxCapacity) {
 		this.maxCapacity = maxCapacity;
 	}
 

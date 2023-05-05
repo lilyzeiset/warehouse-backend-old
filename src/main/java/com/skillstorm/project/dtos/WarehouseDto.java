@@ -6,19 +6,21 @@ public class WarehouseDto {
 	private String name;
 	private String description;
 	private String address;
-	private double maxCapacity;
+	private int maxCapacity;
+	//private double currentCapacity;
 	
 	public WarehouseDto() {
 		super();
 	}
 	
-	public WarehouseDto(long id, String name, String description, String address, double maxCapacity) {
+	public WarehouseDto(long id, String name, String description, String address, int maxCapacity) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.address = address;
 		this.maxCapacity = maxCapacity;
+		//this.currentCapacity = currentCapacity;
 	}
 
 	public long getId() {
@@ -53,12 +55,20 @@ public class WarehouseDto {
 		this.address = address;
 	}
 
-	public double getMaxCapacity() {
+	public int getMaxCapacity() {
 		return maxCapacity;
 	}
 
-	public void setMaxCapacity(double maxCapacity) {
+	public void setMaxCapacity(int maxCapacity) {
 		this.maxCapacity = maxCapacity;
 	}
-	
+/*
+	public double getCurrentCapacity() {
+		return currentCapacity;
+	}
+
+	public void setCurrentCapacity(double currentCapacity) {
+		this.currentCapacity = currentCapacity;
+	}
+*/
 }

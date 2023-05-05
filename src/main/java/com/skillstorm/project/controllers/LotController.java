@@ -47,7 +47,7 @@ public class LotController {
 	@PutMapping("/{sku}")
 	public LotDto updateLot(@PathVariable long id, @Valid @RequestBody LotDto lotData) {
 		lotData.setId(id);
-		return lotService.createLot(lotData);
+		return lotService.updateLot(lotData);
 	}
 	
 	@DeleteMapping("/{sku}")

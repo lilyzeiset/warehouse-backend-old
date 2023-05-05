@@ -34,24 +34,24 @@ public class CategoryController {
 	}
 	
 	@GetMapping
-	public List<CategoryDto> findAllItems() {
+	public List<CategoryDto> findAllCategories() {
 		return categoryService.findAllCategories();
 	}
 	
 	@PostMapping
-	public ResponseEntity<CategoryDto> createItem(@Valid @RequestBody CategoryDto categoryData) {
+	public ResponseEntity<CategoryDto> createCategory(@Valid @RequestBody CategoryDto categoryData) {
 		CategoryDto item = categoryService.createCategory(categoryData);
 		return new ResponseEntity<>(item, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	public CategoryDto updateItem(@PathVariable long id, @Valid @RequestBody CategoryDto categoryData) {
+	public CategoryDto updateCategory(@PathVariable long id, @Valid @RequestBody CategoryDto categoryData) {
 		categoryData.setId(id);
 		return categoryService.createCategory(categoryData);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteItem(@PathVariable long id) {
+	public void deleteCategory(@PathVariable long id) {
 		categoryService.deleteCategory(id);
 	}
 }

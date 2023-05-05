@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.skillstorm.project.dtos.LotDto;
+import com.skillstorm.project.exceptions.ExceedMaxCapacityException;
 import com.skillstorm.project.models.Item;
 import com.skillstorm.project.models.Lot;
 import com.skillstorm.project.models.Warehouse;
@@ -26,6 +27,9 @@ public class LotService {
 	
 	@Autowired
 	private ItemRepository itemRepository;
+	
+	@Autowired
+	private WarehouseService warehouseService;
 
 	/**
 	 * Finds a lot by its id
@@ -51,7 +55,8 @@ public class LotService {
 	}
 
 	/**
-	 * Creates/updates a lot
+	 * Creates a lot
+	 * Checks warehouse capacity and throws an ExceedMaxCapacityException if necessary
 	 * @param lotData
 	 * @return the new lot
 	 */
@@ -68,8 +73,46 @@ public class LotService {
 				lotData.getLocation(),
 				warehouse,
 				item);
+
+		int currentCapacity = warehouseService.getCurrentCapacityById(warehouse.getId());
+		int maxCapacity = warehouse.getMaxCapacity();
+		int quantity = lot.getQuantity();
+		if (currentCapacity + quantity > maxCapacity) {
+			throw new ExceedMaxCapacityException();
+		} else {
+			return lotRepository.save(lot).toDto();
+		}
+	}
+	
+	/**
+	 * Updates a lot
+	 * Checks warehouse capacity and throws an ExceedMaxCapacityException if necessary
+	 * @param lotData
+	 * @return the new lot
+	 */
+	public LotDto updateLot(LotDto lotData) {
+		Warehouse warehouse = warehouseRepository.findById(lotData.getWarehouseId())
+				.orElseThrow();
 		
-		return lotRepository.save(lot).toDto();
+		Item item = itemRepository.findById(lotData.getItemId())
+				.orElseThrow();
+		
+		Lot lot = new Lot(
+				lotData.getId(),
+				lotData.getQuantity(),
+				lotData.getLocation(),
+				warehouse,
+				item);
+
+		int oldQuantity = lotRepository.findById(lot.getId()).orElseThrow().getQuantity();
+		int currentCapacity = warehouseService.getCurrentCapacityById(warehouse.getId()) - oldQuantity;
+		int maxCapacity = warehouse.getMaxCapacity();
+		int quantity = lot.getQuantity();
+		if (currentCapacity + quantity > maxCapacity) {
+			throw new ExceedMaxCapacityException();
+		} else {
+			return lotRepository.save(lot).toDto();
+		}
 	}
 
 	/**

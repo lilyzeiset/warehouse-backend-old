@@ -34,24 +34,29 @@ public class WarehouseController {
 	}
 	
 	@GetMapping
-	public List<WarehouseDto> findAllItems() {
+	public List<WarehouseDto> findAllWarehouses() {
 		return warehouseService.findAllWarehouses();
 	}
 	
+	@GetMapping("/{id}/capacity")
+	public int getCurrentCapacityById(@PathVariable long id) {
+		return warehouseService.getCurrentCapacityById(id);
+	}
+	
 	@PostMapping
-	public ResponseEntity<WarehouseDto> createItem(@Valid @RequestBody WarehouseDto warehouseData) {
+	public ResponseEntity<WarehouseDto> createWarehouse(@Valid @RequestBody WarehouseDto warehouseData) {
 		WarehouseDto item = warehouseService.createWarehouse(warehouseData);
 		return new ResponseEntity<>(item, HttpStatus.CREATED);
 	}
 	
 	@PutMapping("/{id}")
-	public WarehouseDto updateItem(@PathVariable long id, @Valid @RequestBody WarehouseDto warehouseData) {
+	public WarehouseDto updateWarehouse(@PathVariable long id, @Valid @RequestBody WarehouseDto warehouseData) {
 		warehouseData.setId(id);
 		return warehouseService.createWarehouse(warehouseData);
 	}
 	
 	@DeleteMapping("/{id}")
-	public void deleteItem(@PathVariable long id) {
+	public void deleteWarehouse(@PathVariable long id) {
 		warehouseService.deleteWarehouse(id);
 	}
 }
