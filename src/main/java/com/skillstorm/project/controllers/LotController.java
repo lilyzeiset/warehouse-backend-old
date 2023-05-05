@@ -28,7 +28,7 @@ public class LotController {
 	@Autowired
 	private LotService lotService;
 	
-	@GetMapping("/{sku}")
+	@GetMapping("/{id}")
 	public LotDto findLotById(@PathVariable long id) {
 		return lotService.findLotById(id);
 	}
@@ -44,13 +44,13 @@ public class LotController {
 		return new ResponseEntity<>(lot, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/{sku}")
+	@PutMapping("/{id}")
 	public LotDto updateLot(@PathVariable long id, @Valid @RequestBody LotDto lotData) {
 		lotData.setId(id);
 		return lotService.updateLot(lotData);
 	}
 	
-	@DeleteMapping("/{sku}")
+	@DeleteMapping("/{id}")
 	public void deleteLot(@PathVariable long id) {
 		lotService.deleteLot(id);
 	}
